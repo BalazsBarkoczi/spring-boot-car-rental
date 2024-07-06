@@ -12,7 +12,6 @@ public class Reservation {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
     @Column(name = "name")
@@ -35,6 +34,7 @@ public class Reservation {
 
     public Reservation() {
     }
+
 
     public Reservation(Long id, Car car, String name, String email, String address, String phone, String days, String reservationPrice) {
         this.id = id;
