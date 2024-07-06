@@ -18,6 +18,7 @@ public class CarController {
         this.carService = carService;
     }
 
+
     @GetMapping("/cars")
     public String getAllCars(Model model){
         model.addAttribute("allCars",carService.getAllCars());
