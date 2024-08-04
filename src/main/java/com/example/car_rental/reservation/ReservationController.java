@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ReservationController {
 
-    private static final String VIEWS_RESERVATION_CREATE_FORM = "createReservationForm";
-    private static final String RESERVATIONS_LIST = "reservationsList";
+    private static final String VIEWS_RESERVATION_CREATE_FORM = "reservation/createReservationForm";
+    private static final String RESERVATIONS_LIST = "reservation/reservationsList";
 
     //Beans
     private final ReservationService reservationService;
@@ -33,22 +33,12 @@ public class ReservationController {
     @GetMapping("/reservations")
     public String getAllReservations(Model model){
         model.addAttribute("allReservations", reservationService.getAllReservations() );
-        return "reservationsList";
-    }
-
-    //Need to be looked at, doesn't work
-    @GetMapping("/reservations/new")
-    public String createReservation(Model model){
-        Reservation reservation = new Reservation();
-        //This is a problem because car doesn't have an id
-        reservation.setCar(new Car());
-        model.addAttribute("reservation", reservation);
-        return VIEWS_RESERVATION_CREATE_FORM;
+        return RESERVATIONS_LIST;
     }
 
     //Coming from carsList to create a reservation based on a car
     @GetMapping("/reservations/new/{id}")
-    public String createReservationById(@PathVariable("id") Long id, Model model){
+    public String initNewReservation(@PathVariable("id") Long id, Model model){
         Car car = carService.getCarById(id);
         Reservation reservation = new Reservation();
         reservation.setCar(car);
@@ -56,10 +46,9 @@ public class ReservationController {
         return VIEWS_RESERVATION_CREATE_FORM;
     }
 
-    //Old
+    //Post for
     @PostMapping("/reservations/new")
     public String processCreationForm(@ModelAttribute("reservation") Reservation reservation){
-        //System.out.println(reservation.getCar().getId() + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         reservationService.addReservation(reservation);
         return "redirect:/reservations";
     }

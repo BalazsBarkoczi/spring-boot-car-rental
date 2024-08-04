@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CarController {
 
-    private static final String VIEWS_CAR_CREATE_OR_UPDATE_FORM = "createCarForm";
+    private static final String VIEWS_CAR_CREATE_OR_UPDATE_FORM = "car/createCarForm";
+    private static final String CAR_LIST = "car/carsList";
 
     private final CarService carService;
 
@@ -22,7 +23,7 @@ public class CarController {
     @GetMapping("/cars")
     public String getAllCars(Model model){
         model.addAttribute("allCars",carService.getAllCars());
-        return "carsList";
+        return CAR_LIST;
     }
 
     @GetMapping("/cars/new")
