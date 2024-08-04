@@ -24,5 +24,10 @@ public class CarService {
         carRepository.save(car);
     }
 
+    //Find by id
+    public Car getCarById(Long id) {
+        return carRepository.findById(id).get();
+    }
+
     
 }

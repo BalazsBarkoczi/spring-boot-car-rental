@@ -25,20 +25,19 @@
             <th>Phone</th>
             <th>Days</th>
             <th>Price</th>
-            <th>Action</th>
+            <th>Admin Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="reservation:${allReservations}">
             <td th:text="${reservation.getId()}"></td>
+            <td th:text="${reservation.getCar().getId()}"></td>
             <td th:text="${reservation.getName()}"></td>
+            <td th:text="${reservation.getEmail()}"></td>
             <td th:text="${reservation.getAddress()}"></td>
             <td th:text="${reservation.getPhone()}"></td>
             <td th:text="${reservation.getDays()}"></td>
-            <td th:text="${reservation.getPrice()}"></td>
-            <td>
-                <td>Hello</td>
-            </td>
+            <td th:text="${reservation.getReservationPrice()}"></td>
 
         </tr>
         </tbody>

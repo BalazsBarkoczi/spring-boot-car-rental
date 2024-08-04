@@ -15,11 +15,11 @@
     <h2>Save Car</h2>
 
     <form action="#" th:action="@{/cars/new}" th:object="${car}" method="POST">
-        <input type="text" th:field="*{brand}" placeholder="User Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{model}" placeholder="Email" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{year}" placeholder="Address" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{plateNumber}" placeholder="Phone number" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{color}" placeholder="Days to rent" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{brand}" placeholder="Brand" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{model}" placeholder="Model" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{year}" placeholder="Year" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{plateNumber}" placeholder="Plate number" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{color}" placeholder="Color" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2">Save Car</button>
     </form>
