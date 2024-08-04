@@ -14,6 +14,7 @@ public class ReservationController {
 
     private static final String VIEWS_RESERVATION_CREATE_FORM = "reservation/createReservationForm";
     private static final String RESERVATIONS_LIST = "reservation/reservationsList";
+    private static final String RESERVATIONS_UPDATE = "reservation/updateReservationForm";
 
     //Beans
     private final ReservationService reservationService;
@@ -46,11 +47,18 @@ public class ReservationController {
         return VIEWS_RESERVATION_CREATE_FORM;
     }
 
-    //Post for
+    //Post
     @PostMapping("/reservations/new")
     public String processCreationForm(@ModelAttribute("reservation") Reservation reservation){
         reservationService.addReservation(reservation);
         return "redirect:/reservations";
+    }
+
+    //Update
+    @GetMapping("reservations/updateReservation/{id}")
+    public String initUpdateReservation(@PathVariable("id") Long id, Model model){
+        model.addAttribute("reservation", reservationService.getReservationById(id));
+        return RESERVATIONS_UPDATE;
     }
     
 }

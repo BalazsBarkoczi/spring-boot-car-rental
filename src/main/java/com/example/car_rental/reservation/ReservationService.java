@@ -14,12 +14,21 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
+    //List all reservations
     public List<Reservation> getAllReservations(){
         return (List<Reservation>) reservationRepository.findAll();
     }
 
+    //Add new or update reservation
     public void addReservation(Reservation reservation){
         reservationRepository.save(reservation);
     }
+
+    //Find by id
+    public Reservation getReservationById(Long id){
+        return reservationRepository.findById(id).get();
+    }
+
+
     
 }
