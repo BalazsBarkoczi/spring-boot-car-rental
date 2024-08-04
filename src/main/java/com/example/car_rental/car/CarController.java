@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CarController {
 
-    private static final String VIEWS_CAR_CREATE_OR_UPDATE_FORM = "cars/createOrUpdateOwnerForm";
+    private static final String VIEWS_CAR_CREATE_OR_UPDATE_FORM = "createCarForm";
 
     private final CarService carService;
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Cars</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+    <h3>Cars List</h3>
+    <a th:href="@{/cars/new}" class="btn btn-primary btn-sm mb-3" >Add Car</a>
+    <table style="width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Plate Number</th>
+            <th>Color</th>
+            <th>Reservation</th>
+            <th>Admin Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car:${allCars}">
+            <td th:text="${car.getId()}"></td>
+            <td th:text="${car.getBrand()}"></td>
+            <td th:text="${car.getModel()}"></td>
+            <td th:text="${car.getYear()}"></td>
+            <td th:text="${car.getPlateNumber()}"></td>
+            <td th:text="${car.getColor()}"></td>
+
+            <td>
+                <a th:href="@{/reservations/new/{id}(id=${car.id})}"
+                   class="btn btn-primary">Make reservation</a>
+            </td>
+            <!--Not working yet -->
+            <td>
+                <a th:href="@{/cars/updateCar/{id}(id=${car.id})}"
+                   class="btn btn-primary">Update</a>
+                <a th:href="@{/cars/deleteCar/{id}(id=${car.id})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
