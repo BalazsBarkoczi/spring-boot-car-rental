@@ -49,7 +49,7 @@ public class CarController {
         model.addAttribute("car", carService.getCarById(id));
         return CAR_UPDATE_FORM;
     }
-    
+
     //Delete
     @GetMapping("/cars/deleteCar/{id}")
     public String deleteCar(@PathVariable("id") Long id){

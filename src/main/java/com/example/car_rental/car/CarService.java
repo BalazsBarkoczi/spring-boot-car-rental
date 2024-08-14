@@ -1,6 +1,7 @@
 package com.example.car_rental.car;
 
 
+import com.example.car_rental.reservation.ReservationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.Optional;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final ReservationRepository reservationRepository;
 
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, ReservationRepository reservationRepository) {
         this.carRepository = carRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     //GET
@@ -32,6 +35,9 @@ public class CarService {
 
     //Delete
     public void deleteCarById(Long id) {
+        //check if a reservation has this car
+        //if it does delete the reservation too
+        reservationRepository.deleteReservationByCarId(id);
         carRepository.deleteById(id);
     }
 
